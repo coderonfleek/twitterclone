@@ -1,0 +1,7 @@
+{
+  "name": "twitterclone",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
