@@ -8,6 +8,11 @@ import {
   IonMenu,
   IonMenuToggle,
   IonNote,
+  IonThumbnail,
+  IonImg,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from "@ionic/react";
 
 import React from "react";
@@ -39,39 +44,33 @@ interface AppPage {
 const appPages: AppPage[] = [
   {
     title: "Profile",
-    url: "/page/Inbox",
+    url: "/page/Profile",
     iosIcon: mailOutline,
     mdIcon: mailSharp,
   },
   {
-    title: "Outbox",
-    url: "/page/Outbox",
+    title: "Lists",
+    url: "/page/Lists",
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
   },
   {
-    title: "Favorites",
-    url: "/page/Favorites",
+    title: "Topics",
+    url: "/page/Topics",
     iosIcon: heartOutline,
     mdIcon: heartSharp,
   },
   {
-    title: "Archived",
-    url: "/page/Archived",
+    title: "Bookmarks",
+    url: "/page/Bookmarks",
     iosIcon: archiveOutline,
     mdIcon: archiveSharp,
   },
   {
-    title: "Trash",
-    url: "/page/Trash",
+    title: "Moments",
+    url: "/page/Moments",
     iosIcon: trashOutline,
     mdIcon: trashSharp,
-  },
-  {
-    title: "Spam",
-    url: "/page/Spam",
-    iosIcon: warningOutline,
-    mdIcon: warningSharp,
   },
 ];
 
@@ -84,8 +83,18 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Home</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <IonThumbnail slot="start">
+            <IonImg src="https://d3r49iyjzglexf.cloudfront.net/people/fikayo-adepoju-bbc741912f663373522dfa5531d564729605e548c18a0a0a083ad12f4e510ed9.jpg" />
+          </IonThumbnail>
+          <IonListHeader>Fikayo Adepoju</IonListHeader>
+          <IonNote>@coderonfleek</IonNote>
+          <IonGrid>
+            <IonRow>
+              <IonCol>247 Following</IonCol>
+              <IonCol>383 Followers</IonCol>
+            </IonRow>
+          </IonGrid>
+
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
@@ -104,16 +113,6 @@ const Menu: React.FC = () => {
               </IonMenuToggle>
             );
           })}
-        </IonList>
-
-        <IonList id="labels-list">
-          <IonListHeader>Labels</IonListHeader>
-          {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
-          ))}
         </IonList>
       </IonContent>
     </IonMenu>
